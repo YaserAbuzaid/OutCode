@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Bricolage_Grotesque, Anonymous_Pro } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontSerif = Bricolage_Grotesque({
   subsets: ["latin"],
+  variable: "--font-serif",
+});
+
+const fontMono = Anonymous_Pro({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -25,9 +32,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}>{children}</body>
     </html>
   );
 }
