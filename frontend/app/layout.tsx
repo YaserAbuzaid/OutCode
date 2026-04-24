@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Bricolage_Grotesque, Anonymous_Pro } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Orbitron } from "next/font/google";
+const orbitron = Orbitron({subsets: ['latin']})
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -33,7 +35,7 @@ export default function RootLayout({
     <html
       lang="en"
     >
-      <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}>{children}</body>
+      <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} ${orbitron.className} antialiased`}>{children}</body>
     </html>
   );
 }
