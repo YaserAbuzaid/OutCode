@@ -2,10 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import Cards from './Cards'
+
+const features = [
+  { title: 'Real Problems', dsc: 'Interview-level challenges curated for real growth.' },
+  { title: 'Live Battles', dsc: 'Compete in real time and climb the leaderboard.' },
+  { title: 'please kamohelo.', dsc: 'may the big lord kamo build this and add another feature cus i am outa ideas' },
+]
 
 export default function Home() {
   useEffect(() => {
-    const unblockAudio = () =>{
+      const unblockAudio = () =>{
       hoverSound.play().catch(() =>{})
       hoverSound.pause()
       hoverSound.currentTime = 0
@@ -24,6 +31,15 @@ export default function Home() {
       hoverSound.currentTime = 0
       hoverSound.play().catch(() => {})
     }
+    const grid = document.getElementById('gridglowin')
+    const move = (e: MouseEvent) => {
+      if(!grid) return
+      const x=e.clientX
+      const y=e.clientY
+      grid.style.setProperty('--x', `${x}px`)
+      grid.style.setProperty('--y', `${y}px`)
+    }
+    window.addEventListener('mousemove', move)
 
     const handleClick = () => {
       clickSound.currentTime = 0
@@ -74,9 +90,11 @@ export default function Home() {
       el.addEventListener('mousemove', move)
       el.addEventListener('mouseleave', leave)
     })
+    
 
     return () => {
       elements.forEach(el => {
+        window.removeEventListener('mousemove', move)
         el.removeEventListener('mouseenter', handleHover)
         el.removeEventListener('click', handleClick)
       })
@@ -97,7 +115,16 @@ export default function Home() {
       />
 
       {/* splittin the bg into cool squares to look extra cool */}
-      <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div
+  id="griddd"
+  className="absolute inset-0 opacity-20"
+  style={{
+    backgroundImage:
+      "linear-gradient(to right, var(--color-border) 1px, transparent 1px), linear-gradient(to bottom, var(--color-border) 1px, transparent 1px)",
+    backgroundSize: "40px 40px",
+  }}
+/>
+<div id='gridglowin' className='absolute inset-0 pointer-events-none z-0'/>
 
       {/* Glow boobs */}
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-primary/30 blur-[120px] rounded-full" />
@@ -142,30 +169,8 @@ export default function Home() {
 
        {/* i think this is called futures */}
       <section className="grid md:grid-cols-3 gap-6 px-8 mt-40 relative z-10">
-        {[
-          {
-            title: 'Real Problems',
-            dsc: 'Interview-level challenges curated for real growth.'
-          },
-          {
-            title: 'Live Battles',
-            dsc: 'Compete in real time and climb the leaderboard.'
-          },
-          {
-            title: 'please kamohelo.',
-            dsc: 'may the big lord kamo build this and add another feature cus i am outa ideas'
-          }
-        ].map((f, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className="p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-xl hover:border-primary transition"
-          >
-            <h3 className="text-lg font-semibold text-primary">{f.title}</h3>
-            <p className="text-muted-foreground mt-3">{f.dsc}</p>
-          </motion.div>
+        {features.map((f, i) => (
+          <Cards key={i} f={f} i={i}/>
         ))}
       </section>
 
@@ -184,6 +189,14 @@ export default function Home() {
         .text-glow {
           text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
         }
+          #gridglowin {
+          background: radial-gradient(
+          circle 180px at var(--x, 50%) var(--y, 50%),
+          rgba(0, 255, 255, 0.25),
+          transparent 60%
+          );
+          mix-blend-mode: screen;
+          }
       `}</style>
 {/* yk they say no footer no winner, they never said this */}
       <footer className="text-center py-10 mt-40 text-muted-foreground text-sm relative z-10">
