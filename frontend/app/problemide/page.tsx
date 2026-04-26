@@ -6,12 +6,12 @@ const page = () => {
   return (
     <div className='rounded-xl overflow-hidden border border-gray-800 shadow-lg'>
       <Editor width="50vw" height="80vh" language={language} defaultValue="// goodluck" theme="vs-dark" className='m-2' />
-      <button onClick={() => setLanguage("csharp")} className='btn btn-active'>C#</button>
-      <button onClick={() => setLanguage("cpp")} className='btn btn-active'>C++</button>
-      <button onClick={() => setLanguage("java")} className='btn btn-active'>JAVA</button>
-      <button onClick={() => setLanguage("python")} className='btn btn-active'>PYTHON</button>
-      <button onClick={() => setLanguage("r")} className='btn btn-active'>R</button>
-      <button onClick={() => setLanguage("javascript")} className='btn btn-active'>JavaScript</button>
+      <button onClick={() => setLanguage("csharp")} className='btn-active glow idebtns'>C#</button>
+      <button onClick={() => setLanguage("cpp")} className='btn-active glow idebtns'>C++</button>
+      <button onClick={() => setLanguage("java")} className='btn-active glow idebtns'>JAVA</button>
+      <button onClick={() => setLanguage("python")} className='btn-active glow idebtns'>PYTHON</button>
+      <button onClick={() => setLanguage("r")} className='btn-active glow idebtns'>R</button>
+      <button onClick={() => setLanguage("javascript")} className='btn-active glow idebtns'>JavaScript</button>
 
     </div>
   )

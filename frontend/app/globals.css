@@ -4,7 +4,31 @@
 
 @custom-variant dark (&:is(.dark *));
 @layer components {
-
+  .btn {
+  @apply px-3 py-1.5 text-sm rounded-md border border-border 
+  bg-secondary text-secondary-foreground 
+  hover:bg-primary hover:text-primary-foreground 
+  transition;
+}
+  .btn-active{
+    @apply bg-primary text-primary-foreground border-primary
+  }
+  .idebtns {
+    margin-left: 5px;
+    border-radius: 2px;
+    padding-inline: calc(var(--spacing) /* var(--spacing) */ * 3);
+    padding-block: calc(var(--spacing) /* var(--spacing) */ * 1.5);
+     font-size: var(--text-sm) /* 0.875rem = 14px */;
+    line-height: var(--tw-leading, var(--text-sm--line-height) /* calc(1.25 / 0.875) ≈ 1.428571 */);
+     color: var(--secondary-foreground);
+     
+     
+  }
+  .idebtns:hover{
+     background-color:oklch(74.226% 0.13623 54.349);
+    opacity: 10px;
+    transition: ease 0.2s;
+  }
   .cards {
     position: relative;
     padding: 1.5rem;
@@ -22,8 +46,7 @@
     border-color: oklch(0.72 0.18 50);
     box-shadow: 
     0 10px 40px oklch(0 0 0 /0.6),
-    0 0 30px oklch(0.72 0.18 50 / 0.15)
-    ;
+    0 0 30px oklch(0.72 0.18 50 / 0.15);
   }
   .cards::before{
     content: "";
@@ -63,15 +86,7 @@
 
 
 }
-.btn {
-  @apply px-3 py-1.5 text-sm rounded-md border border-border 
-  bg-secondary text-secondary-foreground 
-  hover:bg-primary hover:text-primary-foreground 
-  transition;
-}
-  .btn-active{
-    @apply bg-primary text-primary-foreground border-primary
-  }
+
 }
 @theme inline {
   --color-background: var(--background);
